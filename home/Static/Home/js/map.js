@@ -24,12 +24,22 @@ var homes = [
 ]
 // create a featuregroup to store markers for house locations
 var group = new L.featureGroup([])
+var mauiGroup = new L.featureGroup([])
+var laysan = new L.featureGroup([])
+var oahu = new L.featureGroup([])
 // initialize markers for each location
 for (var i = 0; i < homes.length; i++) {
 			marker = new L.marker([homes[i][1],homes[i][2]])
 				.bindPopup(homes[i][0]) // create popups with labels for each location
 				.addTo(mymap);
         group.addLayer(marker) //add marker to the group
+        if (["Makawao", "Kihei"].indexOf(homes[i][0])>-1 ){
+          mauiGroup.addLayer(marker)
+        }
+        elseif(homes[i][0]==="Laysan"){
+          laysan.addLayer(marker)
+        }
+
 		}
 
 // initialize a new popup in the map
@@ -61,18 +71,13 @@ $('#Hawaii').on('click', function(e){
 
 });
 
-//select maui locations by list location
-var mauiGroup = new L.featureGroup([])
-mauiGroup.addLayer(group.getLayer(43));
-mauiGroup.addLayer(group.getLayer(46));
-
 //zoom to maui based on new group
 $('#Maui').on('click', function(e){
   mymap.fitBounds(mauiGroup.getBounds());
 });
 
 //create a view from the laysan marker by group id
-var laysan = new L.featureGroup([])
+
 laysan.addLayer(group.getLayer(50))
 
 $('#Laysan').on('click', function(e){
@@ -80,8 +85,6 @@ $('#Laysan').on('click', function(e){
   mymap.setZoom(14);  // zoom out to better fit screen
 });
 
-//create a new group for Oahu markers
-var oahu = new L.featureGroup([])
 
 //create search criterea
 var oahuNames = ['Waialua', 'Pupukea', 'Honolulu']

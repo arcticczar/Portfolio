@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -79,9 +79,10 @@ WSGI_APPLICATION = 'portfolioProj.wsgi.application'
 DATABASES = {
     'default': {
          'ENGINE': 'django.contrib.gis.db.backends.postgis',
-         'NAME': os.environ['DBNAME']
-         'USER': os.environ['USER']
+         'NAME': os.environ['DB'],
+         'USER': os.environ['USERNAME'],
          'PASSWORD': os.environ['PASSWORD'],
+         'HOST':'localhost',
          'PORT': '5432',
     },
 }
