@@ -36,7 +36,7 @@ for (var i = 0; i < homes.length; i++) {
         if (["Makawao", "Kihei"].indexOf(homes[i][0])>-1 ){
           mauiGroup.addLayer(marker)
         }
-        elseif(homes[i][0]==="Laysan"){
+        else if(homes[i][0]==="Laysan"){
           laysan.addLayer(marker)
         }
 
@@ -78,7 +78,6 @@ $('#Maui').on('click', function(e){
 
 //create a view from the laysan marker by group id
 
-laysan.addLayer(group.getLayer(50))
 
 $('#Laysan').on('click', function(e){
   mymap.fitBounds(laysan.getBounds())
