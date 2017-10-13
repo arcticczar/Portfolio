@@ -22,6 +22,8 @@ from home import views as homeviews
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', homeviews.index, name='index'),
+    url(r'samples/$', homeviews.samples, name='samples'),
+    url(r'resume/$', homeviews.resume, name='resume'),
     url(r'blog/', include('blog.urls')),
     url(r'accounts/login/$', authviews.login, name='login'),
     url(r'accounts/logout/$', authviews.logout, name='logout', kwargs={'next_page':'/'}),
