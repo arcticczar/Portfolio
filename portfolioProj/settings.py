@@ -131,14 +131,19 @@ USE_TZ = True
 
 LOGIN_REDIRECT_URL='/'
 
-STATIC_URL = '/Static/'
+STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'Static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS= ()
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+# )
 
-STATICFILES_FINDERS = ( 
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "home/static"),
+    os.path.join(BASE_DIR, "blog/Static"),
+
+    # '/var/www/static/',
+]
