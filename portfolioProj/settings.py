@@ -17,7 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'Templates')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'Static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -26,9 +25,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'Static')
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '138.68.236.4','www.field-test.com']
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1', '138.68.236.4','www.field-test.com']
 
 
 # Application definition
@@ -130,6 +129,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+LOGIN_REDIRECT_URL='/'
+
 STATIC_URL = '/Static/'
 
-LOGIN_REDIRECT_URL='/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'Static')
+
+STATICFILES_DIRS= ()
+
+STATICFILES_FINDERS = ( 
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
